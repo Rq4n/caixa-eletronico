@@ -5,5 +5,7 @@ public class Bank {
         Account conta = new Account("321312","ryan","123");
         conta.depositarSaldo(200);
         System.out.println(conta.toString());
+        conta.sacarSaldo(150);
+        System.out.println(conta.toString());
     }
 }

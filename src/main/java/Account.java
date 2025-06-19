@@ -15,8 +15,14 @@ public class Account {
     }
     public void depositarSaldo(double valor){
         valor = valor;
-        if (valor > 0){
-            saldo += valor;
+        if (valor >= 0){
+            this.saldo += valor;
+        }
+    }
+    public void sacarSaldo(double valor){
+        valor = valor;
+        if (valor >= 0){
+            this.saldo -= valor;
         }
     }
     public void setNome(String nome){
