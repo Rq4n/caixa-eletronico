@@ -8,7 +8,7 @@ public class Account {
     private String senha;
     private double saldo;
 
-    public Account(int id,String cpf, String nome, String senha){
+    public Account(int id,String nome, String cpf, String senha){
         this.cpf = cpf;
         this.nome = nome;
         this.senha = senha;
