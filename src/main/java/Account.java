@@ -13,6 +13,12 @@ public class Account {
         this.nome = nome;
         this.senha = senha;
     }
+    public void depositarSaldo(double valor){
+        valor = valor;
+        if (valor > 0){
+            saldo += valor;
+        }
+    }
     public void setNome(String nome){
         this.nome = nome;
     }
