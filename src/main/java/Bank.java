@@ -16,7 +16,7 @@ public class Bank {
     }
 
     //Listar usuarios
-    public void exibirUsuario(String cpf, String senha) {
+    public void autenticar(String cpf, String senha) {
         for (Account contas : contas) {
             if (cpf != contas.getCpf() || senha != contas.getSenha()) {
                 System.out.println("CPF ou Senha Invalida");
@@ -25,4 +25,5 @@ public class Bank {
             }
         }
     }
+
 }
