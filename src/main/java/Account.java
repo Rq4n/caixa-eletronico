@@ -8,20 +8,19 @@ public class Account {
     private String senha;
     private double saldo;
 
-    public Account(String cpf, String nome, String senha){
+    public Account(int id,String cpf, String nome, String senha){
         this.cpf = cpf;
         this.nome = nome;
         this.senha = senha;
+        this.id = id;
     }
     public void depositarSaldo(double valor){
-        valor = valor;
         if (valor >= 0){
             this.saldo += valor;
         }
     }
     public void sacarSaldo(double valor){
-        valor = valor;
-        if (valor >= 0){
+        if (saldo > 0){
             this.saldo -= valor;
         }
     }
@@ -31,7 +30,7 @@ public class Account {
     public String getNome() {
         return nome;
     }
-    public void setSenha(){
+    public void setSenha(String senha){
         this.senha = senha;
     }
     public String getSenha(){
@@ -42,9 +41,6 @@ public class Account {
     }
     public String getCpf(){
         return cpf;
-    }
-    public void setCpf(String cpf){
-        this.cpf = cpf;
     }
     public int getId(){
         return id;

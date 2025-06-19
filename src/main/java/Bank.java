@@ -1,11 +1,17 @@
 package main.java;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bank {
-    public static void main(String[] args) {
-        Account conta = new Account("321312","ryan","123");
-        conta.depositarSaldo(200);
-        System.out.println(conta.toString());
-        conta.sacarSaldo(150);
-        System.out.println(conta.toString());
+    //Gerenciador de contas
+    private List<Account> contas = new ArrayList<>();
+    private int contadorId = 1;
+
+    //Adicionar usuario
+    public void criaUsuario(String nome, String cpf, String senha){
+        Account novoUsuario = new Account (contadorId, nome, cpf, senha);
+        contas.add(novoUsuario);
+        contadorId++;
     }
 }
