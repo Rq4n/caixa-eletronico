@@ -29,22 +29,28 @@ public class Bank {
             }
         }
     }
+
     //Buscar por cpf
     public void buscarPorCpf(String cpf) {
-        for (Account contas : contas){
-            if (cpf.equals(contas.getCpf())){
+        for (Account contas : contas) {
+            if (cpf.equals(contas.getCpf())) {
                 System.out.println("CPF Existente");
             } else {
                 System.out.println("CPF Inexistente");
             }
         }
     }
+
     //Remover usuario
-    public void removerUsuario (int id){
+    public void removerUsuario(int id) {
         boolean removida = contas.removeIf(contas -> contas.getId() == id);
         System.out.println("Usuario removido");
     }
+
     //Listar usuarios
-    public void listarUsuarios(){
+    public void listarUsuarios() {
+        for (Account contas : contas){
+            System.out.println(contas);
+        }
     }
 }
