@@ -1,7 +1,5 @@
 package main.java;
 
-import jdk.jshell.EvalException;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +50,12 @@ public class Bank {
     public void listarUsuarios() {
         for (Account contas : contas){
             System.out.println(contas);
+        }
+    }
+    // Transferir saldo
+    public void transferirSaldo(Account origem, String cpf, double valor){
+        if (valor > 0 ){
+
         }
     }
 }
