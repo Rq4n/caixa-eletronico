@@ -44,7 +44,11 @@ public class Bank {
     //Remover usuario
     public void removerUsuario(int id) {
         boolean removida = contas.removeIf(contas -> contas.getId() == id);
-        System.out.println("Usuario removido");
+        if(removida) {
+            System.out.println("Usuario "+id+" removido");
+        } else {
+            System.out.println("Usuario "+id+" nao encontrado");
+        }
     }
 
     //Listar usuarios
