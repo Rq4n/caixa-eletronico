@@ -1,6 +1,7 @@
 package main.java;
 
-import javax.swing.*;
+import jdk.jshell.EvalException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,19 +18,15 @@ public class Bank {
     }
 
     //Logar usuario
-    public void autenticar(String cpf, String senha) {
-        if (contas.isEmpty()) {
-            System.out.println("Prencher CPF e Senha");
-        }
+    public Account autenticar(String cpf, String senha) {
         for (Account contas : contas) {
-            if (cpf != contas.getCpf() || senha != contas.getSenha()) {
-                System.out.println("CPF ou Senha Invalida");
-            } else {
-                System.out.println(contas);
+            if (contas.getCpf().equals(cpf) && contas.getSenha().equals(senha)) {
+                System.out.println("Conta autenticada: "+contas);
+                return contas;
             }
         }
+        return null;
     }
-
     //Buscar por cpf
     public void buscarPorCpf(String cpf) {
         for (Account contas : contas) {
