@@ -16,7 +16,7 @@ public class Bank {
         contadorId++;
     }
 
-    //Listar usuarios
+    //Logar usuario
     public void autenticar(String cpf, String senha) {
         if (contas.isEmpty()) {
             System.out.println("Prencher CPF e Senha");
@@ -29,7 +29,6 @@ public class Bank {
             }
         }
     }
-
     //Buscar por cpf
     public void buscarPorCpf(String cpf) {
         for (Account contas : contas){
@@ -39,5 +38,13 @@ public class Bank {
                 System.out.println("CPF Inexistente");
             }
         }
+    }
+    //Remover usuario
+    public void removerUsuario (int id){
+        boolean removida = contas.removeIf(contas -> contas.getId() == id);
+        System.out.println("Usuario removido");
+    }
+    //Listar usuarios
+    public void listarUsuarios(){
     }
 }
