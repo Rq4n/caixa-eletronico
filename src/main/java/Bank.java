@@ -1,5 +1,6 @@
 package main.java;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +18,9 @@ public class Bank {
 
     //Listar usuarios
     public void autenticar(String cpf, String senha) {
+        if (contas.isEmpty()) {
+            System.out.println("Prencher CPF e Senha");
+        }
         for (Account contas : contas) {
             if (cpf != contas.getCpf() || senha != contas.getSenha()) {
                 System.out.println("CPF ou Senha Invalida");
@@ -26,4 +30,14 @@ public class Bank {
         }
     }
 
+    //Buscar por cpf
+    public void buscarPorCpf(String cpf) {
+        for (Account contas : contas){
+            if (cpf.equals(contas.getCpf())){
+                System.out.println("CPF Existente");
+            } else {
+                System.out.println("CPF Inexistente");
+            }
+        }
+    }
 }
