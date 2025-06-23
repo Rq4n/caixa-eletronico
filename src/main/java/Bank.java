@@ -19,12 +19,13 @@ public class Bank {
     public Account autenticar(String cpf, String senha) {
         for (Account contas : contas) {
             if (contas.getCpf().equals(cpf) && contas.getSenha().equals(senha)) {
-                System.out.println("Conta autenticada: "+contas);
+                System.out.println("Conta autenticada: " + contas);
                 return contas;
             }
         }
         return null;
     }
+
     //Buscar por cpf
     public void buscarPorCpf(String cpf) {
         for (Account contas : contas) {
@@ -39,23 +40,45 @@ public class Bank {
     //Remover usuario
     public void removerUsuario(int id) {
         boolean removida = contas.removeIf(contas -> contas.getId() == id);
-        if(removida) {
-            System.out.println("Usuario "+id+" removido");
+        if (removida) {
+            System.out.println("Usuario " + id + " removido");
         } else {
-            System.out.println("Usuario "+id+" nao encontrado");
+            System.out.println("Usuario " + id + " nao encontrado");
         }
     }
 
     //Listar usuarios
     public void listarUsuarios() {
-        for (Account contas : contas){
+        for (Account contas : contas) {
             System.out.println(contas);
         }
     }
-    // Transferir saldo
-    public void transferirSaldo(Account origem, String cpf, double valor){
-        if (valor > 0 ){
 
+    public void transferirSaldo(String cpfOrigem, String cpfDestino) {
+        boolean encontrouOrigem = false;
+        for (Account conta : contas){
+            if (conta.getCpf().equals(cpfOrigem)){
+                System.out.println("Conta origem valida");
+                encontrouOrigem = true;
+            }
+        }
+        if (!encontrouOrigem){
+            System.out.println("Conta origem invalida");
+        }
+        boolean encontrouDestino = false;
+        for (Account conta : contas){
+            if (conta.getCpf().equals(cpfDestino)){
+                if (cpfDestino == cpfOrigem){
+                    System.out.println("Cpf destino invalida: Cpf destino nao pode ser igual ao Cpf origem");
+                    return;
+                }
+                System.out.println("Conta destino valida");
+                encontrouDestino = true;
+                return;
+            }
+        }
+        if (!encontrouDestino){
+            System.out.println("Conta destino invalida");
         }
     }
 }
