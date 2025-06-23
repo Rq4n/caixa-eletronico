@@ -31,6 +31,7 @@ public class Account {
 
         if (this.saldo < valor) {
             System.out.println("Saldo insuficiente");
+            return;
         }
 
         this.sacarSaldo(valor);
