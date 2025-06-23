@@ -17,15 +17,22 @@ public class Account {
         this.cpf = cpf;
         this.senha = senha;
     }
+
     public void depositarSaldo(double valor) {
         if (valor <= 0) {
             throw new IllegalArgumentException("Valor invalido para deposito");
         }
         this.saldo += valor;
     }
+
     public void sacarSaldo(double valor) {
-        if (saldo > 0) {
-            this.saldo -= valor;
+        if (valor <=0) {
+            throw new IllegalArgumentException("Valo invalido para saque");
+        }
+        if (valor >0){
+            this.saldo -=valor;
+        } else{
+            throw new IllegalArgumentException("Saldo insuficiente para saque");
         }
     }
 
