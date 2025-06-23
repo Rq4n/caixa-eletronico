@@ -1,21 +1,48 @@
 package main.java;
 
 public class Account {
-    // A Classe Account serve como um meio para o usuario realizar operacoes que interfiram na sua propria conta
-    // para ter interacoes entre contas como transferirSaldo ele deve ficar na classe bank
-    //Usuarios, id, cpf, nome, senha, saldo
     private int id;
     private String cpf;
     private String nome;
     private String senha;
     private double saldo;
+    private Bank banco;
 
     //Falta consultar saldo
-    public Account(int id, String nome, String cpf, String senha) {
+    public Account(int id, String nome, String cpf, String senha, Bank banco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.senha = senha;
+        this.banco = banco;
+    }
+
+    public void transferirSaldo(String cpfDestino, double valor) {
+        if (this.cpf.equals(cpfDestino)) {
+            System.out.println("Nao eh possivel transferir para a propria conta");
+            return;
+        }
+
+        Account contaDestinoObj = banco.buscarPorCpf(cpfDestino);
+
+        if (contaDestinoObj == null) {
+            System.out.println("CPF Invalido para transacao");
+            return;
+        }
+
+        if (this.saldo < valor) {
+            System.out.println("Saldo insuficiente");
+        }
+
+        if (this.saldo <= 0) {
+            System.out.println("Saldo Insuficiente");
+        }
+
+        this.sacarSaldo(valor);
+        contaDestinoObj.depositarSaldo(valor);
+
+        System.out.println("Transferência de R$" + valor + " realizada com sucesso para " + cpfDestino);
+
     }
 
     public void depositarSaldo(double valor) {
@@ -26,12 +53,12 @@ public class Account {
     }
 
     public void sacarSaldo(double valor) {
-        if (valor <=0) {
+        if (valor <= 0) {
             throw new IllegalArgumentException("Valo invalido para saque");
         }
-        if (valor >0){
-            this.saldo -=valor;
-        } else{
+        if (valor > 0) {
+            this.saldo -= valor;
+        } else {
             throw new IllegalArgumentException("Saldo insuficiente para saque");
         }
     }
