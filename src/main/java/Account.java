@@ -8,7 +8,6 @@ public class Account {
     private double saldo;
     private Bank banco;
 
-    //Falta consultar saldo
     public Account(int id, String nome, String cpf, String senha, Bank banco) {
         this.id = id;
         this.nome = nome;
@@ -44,6 +43,9 @@ public class Account {
         System.out.println("Transferência de R$" + valor + " realizada com sucesso para " + cpfDestino);
 
     }
+    public void consultarSaldo(){
+        System.out.println(this.saldo);
+    }
 
     public void depositarSaldo(double valor) {
         if (valor <= 0) {
@@ -56,7 +58,7 @@ public class Account {
         if (valor <= 0) {
             throw new IllegalArgumentException("Valo invalido para saque");
         }
-        if (valor > 0) {
+        if (valor >= this.saldo) {
             this.saldo -= valor;
         } else {
             throw new IllegalArgumentException("Saldo insuficiente para saque");
