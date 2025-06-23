@@ -8,10 +8,11 @@ public class Bank {
     private List<Account> contas = new ArrayList<>();
     private int contadorId = 1;
 
-    public void criaUsuario(String nome, String cpf, String senha) {
+    public Account criaUsuario(String nome, String cpf, String senha) {
         Account novoUsuario = new Account(contadorId, nome, cpf, senha, this);
         contas.add(novoUsuario);
         contadorId++;
+        return novoUsuario;
     }
 
     public Account autenticar(String cpf, String senha) {
