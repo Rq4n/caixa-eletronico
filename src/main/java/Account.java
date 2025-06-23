@@ -33,10 +33,6 @@ public class Account {
             System.out.println("Saldo insuficiente");
         }
 
-        if (this.saldo <= 0) {
-            System.out.println("Saldo Insuficiente");
-        }
-
         this.sacarSaldo(valor);
         contaDestinoObj.depositarSaldo(valor);
 
@@ -58,10 +54,10 @@ public class Account {
         if (valor <= 0) {
             throw new IllegalArgumentException("Valo invalido para saque");
         }
-        if (valor >= this.saldo) {
-            this.saldo -= valor;
+        if (valor > this.saldo) {
+            throw new IllegalArgumentException("Saldo insuficiente para Saque");
         } else {
-            throw new IllegalArgumentException("Saldo insuficiente para saque");
+            this.saldo -= valor;
         }
     }
 
