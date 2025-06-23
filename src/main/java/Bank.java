@@ -54,10 +54,10 @@ public class Bank {
         }
     }
 
-    public void transferirSaldo(String cpfOrigem, String cpfDestino) {
+    public void transferirSaldo(Account contaOrigem, Account contaDestino, double valor) {
         boolean encontrouOrigem = false;
         for (Account conta : contas){
-            if (conta.getCpf().equals(cpfOrigem)){
+            if (contaOrigem.getCpf().equals(contaOrigem)){
                 System.out.println("Conta origem valida");
                 encontrouOrigem = true;
             }
@@ -67,11 +67,7 @@ public class Bank {
         }
         boolean encontrouDestino = false;
         for (Account conta : contas){
-            if (conta.getCpf().equals(cpfDestino)){
-                if (cpfDestino == cpfOrigem){
-                    System.out.println("Cpf destino invalida: Cpf destino nao pode ser igual ao Cpf origem");
-                    return;
-                }
+            if (conta.getCpf().equals(contaDestino)){
                 System.out.println("Conta destino valida");
                 encontrouDestino = true;
                 return;
@@ -80,5 +76,11 @@ public class Bank {
         if (!encontrouDestino){
             System.out.println("Conta destino invalida");
         }
+        if (contaOrigem.getSaldo() < valor){
+            System.out.println("Saldo insuficiente");
+            return;
+        }
+        contaOrigem.sacarSaldo(valor);
+        contaDestino.depositarSaldo(valor);
     }
 }
