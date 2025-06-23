@@ -9,6 +9,9 @@ public class Bank {
     private int contadorId = 1;
 
     public Account criaUsuario(String nome, String cpf, String senha) {
+        if (buscarPorCpf(cpf) != null){
+            throw new IllegalArgumentException("CPF já cadastrado.");
+        }
         Account novoUsuario = new Account(contadorId, nome, cpf, senha, this);
         contas.add(novoUsuario);
         contadorId++;
@@ -16,22 +19,21 @@ public class Bank {
     }
 
     public Account autenticar(String cpf, String senha) {
-        for (Account contas : contas) {
-            if (contas.getCpf().equals(cpf) && contas.getSenha().equals(senha)) {
+        for (Account conta : contas) {
+            if (conta.getCpf().equals(cpf) && conta.getSenha().equals(senha)) {
                 System.out.println("Conta autenticada: " + contas);
-                return contas;
+                return conta;
             }
         }
         return null;
     }
 
     public Account buscarPorCpf(String cpf) {
-        for (Account contas : contas) {
-            if (cpf.equals(contas.getCpf())) {
-                return contas;
+        for (Account conta : contas) {
+            if (cpf.equals(conta.getCpf())) {
+                return conta;
             }
         }
-        System.out.println("CPF Inexistente");
         return null;
     }
 
@@ -46,8 +48,8 @@ public class Bank {
 
     //Listar usuarios
     public void listarUsuarios() {
-        for (Account contas : contas) {
-            System.out.println(contas);
+        for (Account conta : contas) {
+            System.out.println(conta);
         }
     }
 }
